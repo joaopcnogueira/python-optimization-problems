@@ -1,3 +1,4 @@
+# https://medium.com/datarisk-io/otimizando-investimentos-em-marketing-8a3b8d96f1fc
 from pulp import *
 import pandas as pd
 
@@ -19,7 +20,7 @@ for variable in variable_list:
     prob += variable >= 0.05 * investimento_total
     prob += variable <= 0.3 * investimento_total
 
-prob += lpSum([variable_list[i] for i in range(len(cpi_list))]) <= investimento_total
+prob += lpSum([variable_list[i] for i in range(len(variable_list))]) <= investimento_total
 
 # otimizando o problema
 prob.solve()
@@ -40,4 +41,3 @@ results_df = pd.DataFrame(data={
     "channels": channels,
     "values": values
 })
-
